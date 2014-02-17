@@ -1,9 +1,12 @@
 #!/bin/sh
 
-cp ./.profile ~/
-cp ./.bashrc ~/
+BASEDIR=`dirname $0`
 
-# vim
-mkdir -p ~/.vim/
-cp -R ./.vim/ ~/.vim/
-chmod 700 ~/.vim/
+cp ${BASEDIR}/.profile ~/
+cp ${BASEDIR}/.bashrc ~/
+
+# screen setting
+cp ${BASEDIR}/.screenrc ~/
+
+# vim setting
+cp -R ${BASEDIR}/.vim ~/
