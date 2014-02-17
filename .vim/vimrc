@@ -31,6 +31,9 @@ set smartcase           " upper-case sensitive search
 " syntax highlighting
 syntax on               " enable syntax highlighting
 
-
+" Vundle setting, if the file exist
+if filereadable(glob("~/.vim/vimrc_vundle"))
+    source ~/.vim/vimrc_vundle
+endif
 
 
