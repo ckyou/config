@@ -8,6 +8,8 @@ set background=dark
 set mouse=nv            " enable mouse in mode:Normal,Visual(not in Insert)
 set cursorline
 set enc=utf8
+set noerrorbells        " close the fucking error bell
+set vb t_vb=            " close the fucking error bell
 
 "make backspace work normally
 set backspace=2     " Influences the working of <BS>, <Del>, CTRL-W
