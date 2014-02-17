@@ -1,0 +1,18 @@
+#BASIC
+termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm' # 開啟 256 色模式
+defutf8 on 
+vbell off
+startup_message off
+
+
+#Status bar
+#caption always "%{dk}%{+b K}> %{W}%n %t %{K}<%{W}%=%{+b K}load{%l} %{C}$USER@%{W}%H %{db}%{W}  %0C %A  " 
+hardstatus alwayslastline
+hardstatus string '%{= kK}%{w}%H %{K}%= %{= kw}%?%-Lw%?%{B}(%{W}%n*%f %t%?(%u)%?%{B})%{w}%?%+Lw%?%?%= %{K}%{B} %{w}%c%{K}'
+
+#key binding
+bind b encoding big5 utf8
+bind u encoding utf8 utf8
+bindkey \033[D prev
+bindkey \033[C next
+

@@ -1,0 +1,36 @@
+"basic
+
+set nocompatible        " use Vim defaults
+set ruler               " ruler display in the status bar
+set showmode            " show mode at bottom of screen
+set number	        	" enable line number
+set background=dark
+set mouse=nv            " enable mouse in mode:Normal,Visual(not in Insert)
+set cursorline
+set enc=utf8
+
+"make backspace work normally
+set backspace=2     " Influences the working of <BS>, <Del>, CTRL-W
+                    " and CTRL-U in Insert mode. This is a list of items,
+                    " separated by commas. Each item allows a way to backspace
+                    " over something.
+
+" tabs and indenting
+set expandtab           " insert spaces instead of tab chars
+set tabstop=4           " a n-space tab width
+set shiftwidth=4        " allows the use of < and > for VISUAL indenting
+set softtabstop=4       " counts n spaces when DELETE or BCKSPCE is used
+set autoindent          " auto indents next new line
+
+" searching
+set hlsearch            " highlight all search results
+set incsearch           " increment search
+set ignorecase          " case-insensitive search
+set smartcase           " upper-case sensitive search
+
+" syntax highlighting
+syntax on               " enable syntax highlighting
+
+
+
+
