@@ -1,0 +1,57 @@
+" some setting is from the .vimrc in https://github.com/chinghanho/.dotfiles
+
+" http://www.erikzaadi.com/2012/03/19/auto-installing-vundle-from-your-vimrc/
+" Setting up Vundle - the vim plugin bundler
+
+let iCanHazVundle=1
+let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
+
+if !filereadable(vundle_readme)
+  echo "Installing Vundle.."
+  echo ""
+  silent !mkdir -p ~/.vim/bundle
+  silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
+  let iCanHazVundle=0
+endif
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle (required!)
+Bundle 'gmarik/vundle'
+
+" other plugins
+Bundle 'bling/vim-airline'
+Bundle 'kien/ctrlp.vim'
+Bundle 'Lokaltog/vim-easymotion'
+
+" activate plugin 
+filetype plugin indent on " enable filetype-specific plugins
+
+"--- airline
+set laststatus=2
+set t_Co=256
+set noshowmode "cancel the default mode indicator
+let g:airline#extensions#whitespace#enabled = 0 " disable whitespace
+
+let g:airline_right_sep = ''
+let g:airline_left_sep = ''
+let g:airline_linecolumn_prefix = 'LN'
+
+let g:airline_theme='powerlineish' 
+" theme files at .vim/bundle/vim-airline/autoload/airline/themes
+
+"--- ctrlp
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+
+"--- easy motion
+nmap s <Plug>(easymotion-s2)
+nmap t <Plug>(easymotion-t2)
+map  / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+map  n <Plug>(easymotion-next)
+map  N <Plug>(easymotion-prev)
