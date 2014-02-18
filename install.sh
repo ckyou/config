@@ -5,6 +5,7 @@ BASEDIR=`dirname $0`
 
 cp ${BASEDIR}/.profile ~/
 cp ${BASEDIR}/.bashrc ~/
+cp ${BASEDIR}/.inputrc ~/
 
 # screen setting
 cp ${BASEDIR}/.screenrc ~/
