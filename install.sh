@@ -10,6 +10,9 @@ cp ${BASEDIR}/.inputrc ~/
 # screen setting
 cp ${BASEDIR}/.screenrc ~/
 
+# tmux setting 
+cp ${BASEDIR}/.tmux.conf ~/
+
 # vim setting
 cp -R ${BASEDIR}/.vim ~/
 
