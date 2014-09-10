@@ -14,7 +14,7 @@ fi
 if [ "`uname -s`" == "Linux" ]; then
     alias ls='ls --color=auto'
     alias lls='ls -al --color=auto'
-elif [ "`uname -s`" == "FreeBSD" ]; then
+elif [ "`uname -s`" == "FreeBSD" -o "`uname -s`" == "Darwin" ]; then
     alias ls='ls -FG'
     alias lls='ls -al -FG'
 else
@@ -48,19 +48,20 @@ bd=40;33;01:cd=40;33;01:or=40;31;01:ex=01;32:*.tar=01;31:*.tgz=01;31:\
 *.mpg=01;35:*.mpeg=01;35:*.avi=01;35:*.fli=01;35:*.gl=01;35:\
 *.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.ogg=01;35:*.mp3=01;35:\
 *.wav=01;35:"
-elif [ "`uname -s`" == "FreeBSD" ]; then
-DIR=gx
-SYM_LINK=fx
-SOCKET=cx
-PIPE=dx
-EXE=bx
+elif [ "`uname -s`" == "FreeBSD" -o "`uname -s`" == "Darwin" ]; then
+DIR=Gx
+SYM_LINK=Fx
+SOCKET=Cx
+PIPE=Dx
+EXE=Bx
 BLOCK_SP=eg
 CHAR_SP=ed
 EXE_SUID=ab
 EXE_GUID=ag
 DIR_STICKY=ac
 DIR_WO_STICKY=ad
-LSCOLORS="$DIR$SYM_LINK$SOCKET$PIPE$EXE$BLOCK_SP$CHAR_SP$EXE_SUID$EXE_GUID$DIR_STICKY$DIR_WO_STICKY"
+export LSCOLORS="$DIR$SYM_LINK$SOCKET$PIPE$EXE$BLOCK_SP$CHAR_SP$EXE_SUID$EXE_GUID$DIR_STICKY$DIR_WO_STICKY"
+export CLICOLOR=1
 fi
 
 [[ -s "$HOME/.bashrc.local" ]] && source "$HOME/.bashrc.local"
