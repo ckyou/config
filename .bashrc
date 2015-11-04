@@ -21,6 +21,11 @@ else
     alias ls='ls -aF'
 fi
 
+# try to alias git which user installed
+if [ -f /usr/local/bin/git ] ; then
+    alias git='/usr/local/bin/git'
+fi 
+
 alias cls='clear'
 alias rm='rm -i'
 alias mv='mv -i'

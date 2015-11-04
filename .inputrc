@@ -19,3 +19,7 @@ set bell-style none
 "\eOd": backward-word
 "\eOc": forward-word
 
+## enable Alt-arrows 
+# then you can use alt+left or right to move a word
+"\e[1;5D": backward-word 
+"\e[1;5C": forward-word 
