@@ -1,2 +1,6 @@
 *.netrwhist
 /bundle/
+/init.vim
+/autoload/
+/plugged/
+/.ycm_extra_conf.pyc

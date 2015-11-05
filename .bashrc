@@ -21,16 +21,15 @@ else
     alias ls='ls -aF'
 fi
 
-# try to alias git which user installed
-if [ -f /usr/local/bin/git ] ; then
-    alias git='/usr/local/bin/git'
-fi 
 
 alias cls='clear'
 alias rm='rm -i'
 alias mv='mv -i'
 alias cd..="cd .."
 alias cd...="cd ../.."
+
+# use neovim instead of vim, if neovim installed 
+command -v nvim >/dev/null 2>&1 && alias vim='nvim'
 
 # For colourful man pages (CLUG-Wiki style)
 export LESS_TERMCAP_mb=$'\E[01;31m'

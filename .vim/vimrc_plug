@@ -1,0 +1,163 @@
+" install vim-plug if we don't arlready have it
+if empty(glob("~/.vim/autoload/plug.vim"))
+  	echo "Installing Vim-Plug.."
+  	echo ""
+  	silent !mkdir -p ~/.vim/plugged'
+  	silent !mkdir -p ~/.vim/autoload'
+  	silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs 
+       \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall | source $MYVIMRC
+endif
+
+
+" enable filetype-specific Plugins
+filetype plugin indent on 
+
+" pass the plugins folder location (~/.vim/plugged)
+call plug#begin('~/.vim/plugged')
+
+Plug 'bling/vim-airline'        "status bar enhanced
+Plug 'ctrlpvim/ctrlp.vim'       "fuzzy file, buffer..etc finder
+Plug 'Lokaltog/vim-easymotion'  "provide more motion in vim 
+Plug 'Raimondi/delimitMate'     "auto-completion for quotes, parens, brackets, etc. 
+Plug 'tpope/vim-surround'       "easily delete, change and add such surroundings in pairs
+Plug 'tpope/vim-repeat'         "enable repeating supported plugin maps with . 
+Plug 'junegunn/vim-easy-align'  "align target delimeter 
+Plug 'scrooloose/nerdcommenter' "easily comment/uncomment block
+Plug 'mbbill/undotree'          "undo history 
+"Plug 'scrooloose/syntastic'    
+Plug 'scrooloose/nerdtree'      "tree explorer plugin for vim
+Plug 'majutsushi/tagbar'        "displays tags in a window, ordered by scope
+Plug 'SirVer/ultisnips'         "snippet engine    
+Plug 'honza/vim-snippets'       "snippets files
+Plug 'milkypostman/vim-togglelist'  "easiy toggle loc & quickfix list
+
+Plug 'Valloric/YouCompleteMe'   "auto-complete 
+
+call plug#end()
+
+
+"--- airline
+set laststatus=2
+set t_Co=256
+set noshowmode "cancel the default mode indicator
+let g:airline#extensions#whitespace#enabled = 0 " disable whitespace
+
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}  " need to define the dictionary first
+endif
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
+let g:airline_symbols.linenr = '␤'
+let g:airline_symbols.branch = '⎇'
+
+let g:airline_theme='powerlineish' 
+" theme files at .vim/bundle/vim-airline/autoload/airline/themes
+
+
+"--- ctrlp
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+
+"--- easy motion
+nmap s <Plug>(easymotion-s2)
+nmap t <Plug>(easymotion-t2)
+map  / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+map  n <Plug>(easymotion-next)
+map  N <Plug>(easymotion-prev)prev
+
+"--- easy-align 
+" Start interactive EasyAlign in visual mode (e.g. vip,a)
+xmap <leader>a <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. ,aip)
+nmap <leader>a <Plug>(EasyAlign)
+
+"--- nerdcommenter 
+let g:NERDSpaceDelims = 1   "auto add a space between comment symbol
+"  <leader>cc comment block
+"  <leader>cu uncomment block 
+
+"--- undotree
+nnoremap <leader>h :UndotreeToggle<cr>
+let g:undotree_WindowLayout = 2        " use layout 2, large diff panel
+let g:undotree_SetFocusWhenToggle = 1  " forcus undotree panel while open
+" this key maping only active while opening undotree panel
+function g:Undotree_CustomMap()
+   nmap <buffer> r <plug>UndotreeGoNextState		
+   nmap <buffer> u <plug>UndotreeGoPreviousState
+endfunc
+
+" --- syntastic
+" NOTE: since YouComepleMe has all features which syntastic has, don't need to
+"       this plugin. If don't use YCM, maybe i will install this. So keep this
+"       block
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+
+" let g:syntastic_auto_loc_list = 0   " don't open/close panel automatically
+" let g:syntastic_loc_list_height = 5
+" let g:syntastic_check_on_open = 1   " check when buffers loaded 
+" let g:syntastic_check_on_wq = 0     " skip check when :wq
+" let g:syntastic_error_symbol='✗'    
+" let g:syntastic_warning_symbol='⚠'
+" let g:syntastic_style_error_symbol = '✗'
+" let g:syntastic_style_warning_symbol = '⚠'
+
+" function to toggle error panel
+" see: http://www.wklken.me/posts/2015/06/07/vim-plugin-syntastic.html
+" function! ToggleErrors()
+    " let old_last_winnr = winnr('$')
+    " lclose
+    " if old_last_winnr == winnr('$')
+        " " Nothing was closed, open syntastic error location panel
+        " Errors
+    " endif
+" endfunction
+" nnoremap <F4> :call ToggleErrors()<cr>
+" nnoremap <Leader>sn :lnext<cr>
+" nnoremap <Leader>sp :lprevious<cr>
+
+" --- nerdtree 
+let g:NERDTreeDirArrows = 1
+let g:NERDTreeDirArrowExpandable = '▸'
+let g:NERDTreeDirArrowCollapsible = '▾'
+
+nnoremap <F1> :NERDTreeToggle<CR> 
+
+" --- vim-togglelist
+nnoremap <F5> :call ToggleLocationList()<CR>
+nnoremap <F6> :call ToggleQuickfixList()<CR>
+
+" --- tagbar
+let g:tagbar_autofocus = 1
+nnoremap <F8> :TagbarToggle<CR>
+
+" --- ultisnips & vim-snippets
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+
+" --- YouCompleteMe
+"" point to default ycm_extra_conf
+let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+let g:ycm_error_symbol = '✗'
+let g:ycm_warning_symbol = '⚠'
+"" always put data into list
+let g:ycm_always_populate_location_list = 1 
+"" don't open loclist, when call YcmDiags
+let g:ycm_open_loclist_on_ycm_diags = 0     
+"" auto close scratch/preview window on top, when autocomplete
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_autoclose_preview_window_after_insertion = 1
+
+let g:ycm_complete_in_comments = 0 " use YCM in comment
+
+nnoremap <F4> :YcmDiags<CR>        
+nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>

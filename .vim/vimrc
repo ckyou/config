@@ -1,5 +1,4 @@
 "basic
-
 set nocompatible        " use Vim defaults
 set ruler               " ruler display in the status bar
 set showmode            " show mode at bottom of screen
@@ -10,6 +9,7 @@ set cursorline
 set enc=utf8
 set noerrorbells        " close the fucking error bell
 set vb t_vb=            " close the fucking error bell
+set showcmd             " show what command is typed now
 
 "make backspace work normally
 set backspace=2     " Influences the working of <BS>, <Del>, CTRL-W
@@ -22,7 +22,7 @@ set expandtab           " insert spaces instead of tab chars
 set tabstop=4           " a n-space tab width
 set shiftwidth=4        " allows the use of < and > for VISUAL indenting
 set softtabstop=4       " counts n spaces when DELETE or BCKSPCE is used
-set autoindent          " auto indents next new line
+"set autoindent          " auto indents next new line
 
 " searching
 set hlsearch            " highlight all search results
@@ -30,12 +30,60 @@ set incsearch           " increment search
 set ignorecase          " case-insensitive search
 set smartcase           " upper-case sensitive search
 
-" set key mapping 
-"" use F2 to switch paste mode
+" set key mapping
+" use `:map` to check all key mapping  
+" --- remap <leader> from \ to ,
+let mapleader = ','
+let g:mapleader = ','
+
+" --- disable F1 to show help page, if no plugin uses this key maping
+noremap <F1> <Esc>
+" --- use F2 to switch paste mode
 nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
-set showmode
+" --- use F3 to able/disable showing line number
+"     (this func is from https://github.com/wklken/k-vim/blob/master/vimrc)
+function! HideNumber()
+  if(&relativenumber == &number)
+    set relativenumber! number!
+  elseif(&number)
+    set number!
+  else
+    set relativenumber!
+  endif
+  set number?
+endfunc
+nnoremap <F3> :call HideNumber()<CR>
 
+" --- preserve F1, F4 ~ F8 for Plugins
+" F1 -> for nerdtree
+" F4 -> for syntastic OR for YouCompleteMe
+" F5 -> toggle location list
+" F6 -> toggle quickfix list
+" F7 -> empty
+" F8 -> for tagbar
+
+" --- switching vim tabs
+nnoremap <leader>tc :tabnew<CR>
+map <leader><Right> :tabnext<cr>
+map <leader><Left> :tabprev<cr>
+map <leader>th :tabfirst<cr>
+map <leader>tl :tablast<cr>
+map <leader>tj :tabnext<cr>
+map <leader>tk :tabprev<cr>
+map <leader>tn :tabnext<cr>
+map <leader>tp :tabprev<cr>
+
+noremap <leader>1 1gt
+noremap <leader>2 2gt
+noremap <leader>3 3gt
+noremap <leader>4 4gt
+noremap <leader>5 5gt
+noremap <leader>6 6gt
+noremap <leader>7 7gt
+noremap <leader>8 8gt
+noremap <leader>9 9gt
+noremap <leader>0 :tablast<cr>
 
 " syntax highlighting
 syntax on               " enable syntax highlighting
@@ -43,9 +91,9 @@ syntax on               " enable syntax highlighting
 " color theme
 colorscheme xoria256
 
-" Vundle setting, if the file exist
-if filereadable(glob("~/.vim/vimrc_vundle"))
-    source ~/.vim/vimrc_vundle
+" load Plug as Vim plugin manager
+if filereadable(glob("~/.vim/vimrc_plug"))
+    source ~/.vim/vimrc_plug
 endif
 
 
