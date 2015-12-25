@@ -28,12 +28,14 @@ Plug 'mbbill/undotree'          "undo history
 "Plug 'scrooloose/syntastic'    
 Plug 'scrooloose/nerdtree'      "tree explorer plugin for vim
 Plug 'majutsushi/tagbar'        "displays tags in a window, ordered by scope
-Plug 'SirVer/ultisnips'         "snippet engine    
-Plug 'honza/vim-snippets'       "snippets files
+Plug 'danro/rename.vim'             "add rename command to vim
+
+Plug 'SirVer/ultisnips'             "snippet engine    
+Plug 'honza/vim-snippets'           "snippets files
 Plug 'milkypostman/vim-togglelist'  "easiy toggle loc & quickfix list
-
-Plug 'Valloric/YouCompleteMe'   "auto-complete 
-
+Plug 'ervandew/supertab'            "use this to combine key of YCM and ultisnips
+Plug 'Valloric/YouCompleteMe'       "auto-complete 
+                                    "install.py --clang-completer --system-libclang
 call plug#end()
 
 
@@ -138,15 +140,17 @@ let g:tagbar_autofocus = 1
 nnoremap <F8> :TagbarToggle<CR>
 
 " --- ultisnips & vim-snippets
-let g:UltiSnipsExpandTrigger="<c-j>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 " --- YouCompleteMe
 "" point to default ycm_extra_conf
 let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 let g:ycm_error_symbol = '✗'
 let g:ycm_warning_symbol = '⚠'
+"" disable to show the symbol
+let g:ycm_enable_diagnostic_signs = 0
 "" always put data into list
 let g:ycm_always_populate_location_list = 1 
 "" don't open loclist, when call YcmDiags
@@ -156,6 +160,10 @@ let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
 
 let g:ycm_complete_in_comments = 0 " use YCM in comment
+
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
 
 nnoremap <F4> :YcmDiags<CR>        
 nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
