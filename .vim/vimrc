@@ -36,8 +36,9 @@ set smartcase           " upper-case sensitive search
 let mapleader = ','
 let g:mapleader = ','
 
-" --- disable F1 to show help page, if no plugin uses this key maping
-noremap <F1> <Esc>
+" --- disable F1 to show help page. 
+" --- if no plugin uses this key maping, uncommment this
+" noremap <F1> <Esc>
 " --- use F2 to switch paste mode
 nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>

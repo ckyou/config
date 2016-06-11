@@ -70,7 +70,7 @@ nmap t <Plug>(easymotion-t2)
 map  / <Plug>(easymotion-sn)
 omap / <Plug>(easymotion-tn)
 map  n <Plug>(easymotion-next)
-map  N <Plug>(easymotion-prev)prev
+map  N <Plug>(easymotion-prev)
 
 "--- easy-align 
 " Start interactive EasyAlign in visual mode (e.g. vip,a)

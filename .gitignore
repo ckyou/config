@@ -1,3 +1,4 @@
 *.DS_Store
-/.sensible.bash
 /.bashrc
+/sensible.bash
+/commacd.bash

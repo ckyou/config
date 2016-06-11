@@ -1,1 +1,1 @@
-/Users/ckyou/config/.vim
+/Users/ckyou/dotfiles/.vim
