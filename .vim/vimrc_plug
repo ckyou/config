@@ -17,6 +17,7 @@ filetype plugin indent on
 call plug#begin('~/.vim/plugged')
 
 Plug 'bling/vim-airline'        "status bar enhanced
+Plug 'vim-airline/vim-airline-themes' "with its themes
 Plug 'ctrlpvim/ctrlp.vim'       "fuzzy file, buffer..etc finder
 Plug 'Lokaltog/vim-easymotion'  "provide more motion in vim 
 Plug 'Raimondi/delimitMate'     "auto-completion for quotes, parens, brackets, etc. 
