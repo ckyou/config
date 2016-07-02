@@ -37,6 +37,8 @@ Plug 'milkypostman/vim-togglelist'  "easiy toggle loc & quickfix list
 Plug 'ervandew/supertab'            "use this to combine key of YCM and ultisnips
 Plug 'Valloric/YouCompleteMe'       "auto-complete 
                                     "install.py --clang-completer --system-libclang
+Plug 'othree/yajs.vim'
+                                    
 call plug#end()
 
 
