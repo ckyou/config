@@ -1,5 +1,7 @@
 #BASIC
+attrcolor b ".I" 
 termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm' # 開啟 256 色模式
+defbce on
 defutf8 on 
 vbell off
 startup_message off
